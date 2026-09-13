@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea6a599e-4dea-4d76-82ba-db95419f1807" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/Enum/Selbstbeteiligung.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/Beitragsrechner.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/Service/BeitragsrechnerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="ea6a599e-4dea-4d76-82ba-db95419f1807" name="Changes" comment="feat: create the Entities Tarif and Anfrage, Beitragsrechner.php class as a service and it's Tests">
+      <change afterPath="$PROJECT_DIR$/src/Service/TarifEmpfehlung.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/Service/TarifEmpfehlungTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,11 +174,24 @@
       <updated>1789237456379</updated>
       <workItem from="1789237457408" duration="7860000" />
       <workItem from="1789248649483" duration="1750000" />
-      <workItem from="1789293722530" duration="15195000" />
+      <workItem from="1789293722530" duration="17312000" />
     </task>
+    <task id="LOCAL-00001" summary="feat: create the Entities Tarif and Anfrage, Beitragsrechner.php class as a service and it's Tests">
+      <option name="closed" value="true" />
+      <created>1789313114668</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789313114668</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: create the Entities Tarif and Anfrage, Beitragsrechner.php class as a service and it's Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: create the Entities Tarif and Anfrage, Beitragsrechner.php class as a service and it's Tests" />
   </component>
 </project>
