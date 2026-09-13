@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        {% block stylesheets %}
+            <style>
+                :root {
+                    --color-bg: #f6f6f8;
+                    --color-surface: #ffffff;
+                    --color-border: #e6e6ea;
+                    --color-text: #1c1c22;
+                    --color-text-muted: #6b6b76;
+                    --color-primary: #3d4bf5;
+                    --color-primary-hover: #2f3bd6;
+                    --color-primary-soft: #eef0ff;
+                    --color-danger: #d3402f;
+                    --color-danger-soft: #fbeceb;
+                    --radius: 12px;
+                    --radius-sm: 8px;
+                    --shadow: 0 1px 2px rgba(20, 20, 30, 0.04), 0 8px 24px rgba(20, 20, 30, 0.06);
+                    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+                }
+
+                * { box-sizing: border-box; }
+
+                html, body {
+                    height: 100%;
+                }
+
+                body {
+                    margin: 0;
+                    font-family: var(--font-sans);
+                    background: var(--color-bg);
+                    color: var(--color-text);
+                    line-height: 1.5;
+                    -webkit-font-smoothing: antialiased;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                h1, h2, h3 {
+                    line-height: 1.25;
+                    letter-spacing: -0.01em;
+                }
+
+                a {
+                    color: var(--color-primary);
+                    text-decoration: none;
+                }
+
+                a:hover {
+                    text-decoration: underline;
+                }
+
+                .site-header {
+                    padding: 1.25rem 1.5rem;
+                    border-bottom: 1px solid var(--color-border);
+                    background: var(--color-surface);
+                }
+
+                .site-header__brand {
+                    max-width: 640px;
+                    margin: 0 auto;
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    color: var(--color-text);
+                }
+
+                .page {
+                    flex: 1;
+                    width: 100%;
+                    max-width: 640px;
+                    margin: 0 auto;
+                    padding: 2.5rem 1.5rem 4rem;
+                }
+
+                .page h1 {
+                    margin: 0 0 1.5rem;
+                    font-size: 1.6rem;
+                    font-weight: 700;
+                }
+
+                .card {
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: var(--radius);
+                    box-shadow: var(--shadow);
+                    padding: 1.75rem;
+                }
+
+                .card + .card {
+                    margin-top: 1.25rem;
+                }
+
+                .form-group {
+                    margin-bottom: 1.5rem;
+                }
+
+                .form-group:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                label {
+                    display: block;
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    margin-bottom: 0.5rem;
+                }
+
+                .form-group > p {
+                    font-size: 0.875rem;
+                    font-weight: 600;
+                    margin: 0 0 0.5rem;
+                }
+
+                input[type="text"],
+                input[type="number"] {
+                    width: 100%;
+                    padding: 0.65rem 0.8rem;
+                    font-size: 0.95rem;
+                    font-family: inherit;
+                    color: var(--color-text);
+                    background: var(--color-surface);
+                    border: 1px solid var(--color-border);
+                    border-radius: var(--radius-sm);
+                    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+                }
+
+                input[type="text"]:focus,
+                input[type="number"]:focus {
+                    outline: none;
+                    border-color: var(--color-primary);
+                    box-shadow: 0 0 0 3px var(--color-primary-soft);
+                }
+
+                .option-group {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 0.5rem;
+                }
+
+                .option-group label {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.45rem;
+                    margin: 0;
+                    padding: 0.55rem 0.9rem;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    border: 1px solid var(--color-border);
+                    border-radius: 999px;
+                    cursor: pointer;
+                    transition: border-color 0.15s ease, background 0.15s ease;
+                }
+
+                .option-group label:has(input:checked) {
+                    border-color: var(--color-primary);
+                    background: var(--color-primary-soft);
+                    color: var(--color-primary-hover);
+                }
+
+                .option-group input {
+                    accent-color: var(--color-primary);
+                }
+
+                .field-error {
+                    margin: 0.5rem 0 0;
+                    font-size: 0.8125rem;
+                    color: var(--color-danger);
+                }
+
+                .btn {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 0.4rem;
+                    padding: 0.7rem 1.4rem;
+                    font-size: 0.9375rem;
+                    font-weight: 600;
+                    font-family: inherit;
+                    border: none;
+                    border-radius: var(--radius-sm);
+                    cursor: pointer;
+                    transition: background 0.15s ease, transform 0.05s ease;
+                }
+
+                .btn:active {
+                    transform: translateY(1px);
+                }
+
+                .btn-primary {
+                    background: var(--color-primary);
+                    color: #fff;
+                    width: 100%;
+                }
+
+                .btn-primary:hover {
+                    background: var(--color-primary-hover);
+                    text-decoration: none;
+                }
+
+                .btn-link {
+                    color: var(--color-text-muted);
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                }
+
+                .btn-link:hover {
+                    color: var(--color-primary);
+                }
+
+                .recommendation {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    gap: 1rem;
+                    flex-wrap: wrap;
+                }
+
+                .recommendation__label {
+                    margin: 0 0 0.35rem;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    color: var(--color-text-muted);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+
+                .recommendation__tarif {
+                    margin: 0 0 0.35rem;
+                    font-size: 1.35rem;
+                    font-weight: 700;
+                }
+
+                .recommendation__reason {
+                    margin: 0;
+                    font-size: 0.9rem;
+                    color: var(--color-text-muted);
+                }
+
+                .stat {
+                    text-align: right;
+                }
+
+                .stat__label {
+                    margin: 0 0 0.35rem;
+                    font-size: 0.8125rem;
+                    font-weight: 600;
+                    color: var(--color-text-muted);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+
+                .stat__value {
+                    margin: 0;
+                    font-size: 1.35rem;
+                    font-weight: 700;
+                }
+
+                .table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    font-size: 0.9rem;
+                }
+
+                .table th,
+                .table td {
+                    padding: 0.75rem 0.5rem;
+                    text-align: left;
+                    border-bottom: 1px solid var(--color-border);
+                }
+
+                .table th {
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    color: var(--color-text-muted);
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                }
+
+                .table td:not(:first-child),
+                .table th:not(:first-child) {
+                    text-align: right;
+                }
+
+                .table tbody tr:last-child td {
+                    border-bottom: none;
+                }
+
+                .table tbody tr.is-recommended {
+                    background: var(--color-primary-soft);
+                }
+
+                .table tbody tr.is-recommended td:first-child {
+                    font-weight: 600;
+                    color: var(--color-primary-hover);
+                }
+
+                .badge {
+                    display: inline-block;
+                    margin-left: 0.5rem;
+                    padding: 0.15rem 0.55rem;
+                    font-size: 0.6875rem;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.03em;
+                    color: #fff;
+                    background: var(--color-primary);
+                    border-radius: 999px;
+                }
+
+                .page-footer {
+                    margin-top: 1.5rem;
+                    text-align: center;
+                }
+            </style>
+        {% endblock %}
+
+        {% block javascripts %}
+        {% endblock %}
+
+        {% set frankenphp_hot_reload = app.request.server.get('FRANKENPHP_HOT_RELOAD') %}
+        {% if frankenphp_hot_reload %}
+        <meta name="frankenphp-hot-reload:url" content="{{ frankenphp_hot_reload }}">
+        <script src="https://cdn.jsdelivr.net/npm/idiomorph"></script>
+        <script src="https://cdn.jsdelivr.net/npm/frankenphp-hot-reload/+esm" type="module"></script>
+        {% endif %}
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="site-header__brand">Hausrat-Tarifrechner</div>
+        </header>
+        <div class="page">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

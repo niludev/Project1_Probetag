@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ihr Ergebnis - Hausrat-Tarifrechner{% endblock %}
+
+{% block body %}
+    <h1>Ihr Ergebnis</h1>
+
+    <div class="card recommendation">
+        <div>
+            <p class="recommendation__label">Empfohlener Tarif</p>
+            <p class="recommendation__tarif">{{ empfehlung.tarif }}</p>
+            <p class="recommendation__reason">{{ empfehlung.grund }}</p>
+        </div>
+        <div class="stat">
+            <p class="stat__label">Versicherungssumme</p>
+            <p class="stat__value">{{ versicherungssumme }} €</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Tarif</th>
+                <th>Jahresbeitrag</th>
+                <th>Monatsbeitrag</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for ergebnis in ergebnisse %}
+                <tr{% if ergebnis.name == empfehlung.tarif %} class="is-recommended"{% endif %}>
+                    <td>
+                        {{ ergebnis.name }}
+                        {% if ergebnis.name == empfehlung.tarif %}
+                            <span class="badge">Empfohlen</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ ergebnis.jahresbeitrag }} €</td>
+                    <td>{{ ergebnis.monatsbeitrag }} €</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <p class="page-footer"><a class="btn-link" href="{{ path('hausrat_form') }}">← Neue Berechnung</a></p>
+{% endblock %}

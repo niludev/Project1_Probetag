@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hausrat-Tarifrechner{% endblock %}
+
+{% block body %}
+    <h1>Hausrat-Tarifrechner</h1>
+
+    <div class="card">
+        <form method="post" action="{{ path('hausrat_form') }}">
+            <div class="form-group">
+                <label for="wohnflaeche">Wohnfläche (m²)</label>
+                <input type="number" id="wohnflaeche" name="wohnflaeche" required>
+                {% if errors.wohnflaeche is defined %}
+                    <p class="field-error">{{ errors.wohnflaeche }}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <label for="plz">Postleitzahl</label>
+                <input type="text" id="plz" name="plz" maxlength="5" required>
+                {% if errors.plz is defined %}
+                    <p class="field-error">{{ errors.plz }}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <p>Selbstbeteiligung</p>
+                <div class="option-group">
+                    <label><input type="radio" name="selbstbeteiligung" value="0" checked> 0 €</label>
+                    <label><input type="radio" name="selbstbeteiligung" value="150"> 150 €</label>
+                    <label><input type="radio" name="selbstbeteiligung" value="300"> 300 €</label>
+                </div>
+                {% if errors.selbstbeteiligung is defined %}
+                    <p class="field-error">{{ errors.selbstbeteiligung }}</p>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                <p>Zusatzbausteine</p>
+                <div class="option-group">
+                    <label><input type="checkbox" name="fahrrad" value="1"> Fahrraddiebstahl</label>
+                    <label><input type="checkbox" name="glas" value="1"> Glasbruch</label>
+                    <label><input type="checkbox" name="elementar" value="1"> Elementarschäden</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Tarif berechnen</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
