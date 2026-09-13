@@ -1,0 +1,7 @@
+FROM php:8.5-apache
+
+WORKDIR /var/www/html
+
+COPY index1.php .
+
+EXPOSE 80
